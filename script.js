@@ -1,3 +1,11 @@
+const SoundManager = {
+    laserShot: new Audio("assets/sounds/laser-shot.wav"),
+
+    playLaserShot() {
+        const shot = this.laserShot.cloneNode();
+        shot.play();
+    }
+}
 class Player {
     constructor( game ) {
         this.game = game;
@@ -47,6 +55,7 @@ class Projectile {
     start(x, y) {
         this.x = x - this.width * 0.5;
         this.y = y;
+        SoundManager.playLaserShot();
         this.free = false;
     }
     reset() {
